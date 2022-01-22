@@ -1,3 +1,6 @@
+<?php
+$product_data = json_decode(file_get_contents("product.json"), true);
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,10 +12,10 @@
   <body>
     <section>
       <div class="product">
-        <img src="https://i.imgur.com/EHyR2nP.png" alt="The cover of Stubborn Attachments" />
+        <img src="<?php echo $product_data['img']; ?>" alt="The cover of <?php echo $product_data['name']; ?>" />
         <div class="description">
-          <h3>Stubborn Attachments</h3>
-          <h5>$20.00</h5>
+          <h3><?php echo $product_data['name']; ?></h3>
+          <h5><?php echo $product_data['price']; ?></h5>
         </div>
       </div>
       <form action="/create-checkout-session.php" method="POST">
